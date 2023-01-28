@@ -1,0 +1,178 @@
+.stories
+{
+    @include flex(center, center);
+
+    .story
+    {
+        width: rem(100);
+        height: rem(180);
+        // background: url("https://picsum.photos/id/29/100/180");
+        
+        @for $i from 1 through 6 {
+            &.story-#{$i}
+            {
+                background-image: url("https://picsum.photos/id/#{$i + 23}/100/180");
+            }
+        }
+        
+
+
+        @include flex(space-between, flex-start);
+        flex-direction: column;
+        padding: rem(10);
+        margin: unset;
+        border-radius: rem(10);
+        box-shadow: 0 2px 2px #000000b8;
+        background-color: #00000020;
+        background-blend-mode: multiply;
+
+        img
+        {
+            @include img-rounded(40);
+            border: 2px solid $active-color;
+            outline: 1px solid #fff;
+        }
+
+        &__username
+        {
+            color: white;
+            font-weight: 500;
+            font-size: .8rem;
+            text-shadow: 1px 1px 2px #000000b8;
+        }
+    }
+
+}
+
+.create-post
+{
+    @include component-box(10, 15);
+    background-color: #fff;
+
+    &__image
+    {
+        @include img-rounded(40);
+    }
+
+    &__btns
+    {
+        @include flex(space-around, center);
+        padding-top: rem(10);        
+        margin-top: rem(10);        
+        border-top: 1px solid #e4e4e4;
+
+        &__btn
+        {
+            @include flex(space-between, center);
+            font-size: rem(18);
+
+            span{color: #656565;}
+
+            i{color: $active-color;}
+        }
+    }
+    
+}
+
+.create-room
+{
+    @include component-box(10, 15);
+    @include flex(space-around, center);
+    background-color: #fff;
+
+    &__btn
+    {
+        @include flex(space-between, center);
+
+        font-size: rem(18);
+        border: 2px solid #efefef;
+        border-radius: rem(25);
+        padding: rem(5) rem(15);
+
+        span{color: #656565}
+
+        i {color: $active-color;}
+    }
+
+    &__image{img{@include img-rounded(40)}}
+
+
+}
+
+.news-feed
+{
+    @include component-box(10, 15);
+    background-color: #fff;
+
+    &__header
+    {
+
+
+        div:nth-child(2) {flex: 1}
+        @include flex(space-between, center);
+
+        &__post-userimage img
+        {
+            @include img-rounded(40);
+        }
+
+        &__post-meta
+        {
+            &__name {font-weight: 600;}
+            &__info {
+                @include flex(left, center, 5);
+
+            }
+        }
+        &__options
+        {
+            font-weight: bold;
+            font-size: 2rem;
+            position: relative;
+            top: rem(-15);
+            line-height: 0;
+        }
+    }
+
+    &__feed
+    {
+        &__text, &__image{margin-top: $primary-padding;}
+        
+        &__image
+        {
+            border-radius: rem(5);
+        }
+    }
+
+    &__footer
+    {
+        @include flex(space-between, center);
+        padding-top: $primary-padding;
+        
+        &__reactions
+        {
+            font-size: 1.2rem;
+        }
+    }
+
+    &__comment-box
+    {
+        padding-top: $primary-padding;
+
+        .input-box__text input
+        {
+            @include round-box(#efefef, 30);
+            font-size: .8rem;
+            direction: auto;
+        }
+
+        label{width: 100%}
+
+        img
+        {
+            @include img-rounded(30);
+        }
+    }
+
+}
+

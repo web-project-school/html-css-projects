@@ -1,0 +1,102 @@
+@function rem($value) {
+    $remValue: $value;
+
+    @if (type-of($value) == number)
+    {
+        $remValue: ($value / 16) + rem;
+    }
+
+    @return $remValue;
+}
+
+@mixin img-rounded($size)
+{
+    width: rem($size);
+    height: rem($size);
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+@mixin circle-icon($size)
+{
+    width: rem($size);
+    height: rem($size);
+    border-radius: 50%;
+}
+
+
+$primary-font: Segoe UI Historic, Segoe UI, Helvetica, Arial, sans-serif;
+$primary-background: #f0f0f0;
+$icon-color: #656565;
+$icon-background-color: #e4e4e4;
+$active-color: #1b75e5;
+
+$primary-padding: rem(10);
+$sidebar-width: rem(360);
+$feed-width: rem(680);
+
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body
+{
+  background-color: $primary-background;
+  font-family: $primary-font;
+}
+
+@mixin flex($justify: center, $align: center, $gap: 10)
+{
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: rem($gap);
+}
+
+@mixin round-box($bg-color, $size)
+{
+  border: none;
+  height: rem($size);
+  border-radius: rem($size / 2);
+  padding: rem($size / 2);
+  background-color: $bg-color;
+}
+
+@mixin component-box($margin: unset, $padding: unset, $radius: 10)
+{
+  margin: rem($margin);
+  padding: rem($padding);
+  border-radius: rem($radius);
+  box-shadow: 0 2px 2px #00000020;
+}
+
+%content-component
+{
+  @include flex(left, center, 5);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: rem(5) 0;
+}
+
+@function rendom-rgb()
+{
+  @return rgb(random(255), random(255), random(255));
+}
+.input-box
+{
+  &__text
+  {
+    @include flex(space-between, center);
+    label{width: 100%;}
+
+    input 
+    {
+      @include round-box(#efefef, 40);
+      width: inherit;
+      font-size: rem(15);
+    }
+  }
+}
